@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:TestingApp.ViewModels"
+             x:Class="TestingApp.Views.UsuariosPage">
+
+    <ContentPage.BindingContext>
+        <viewModels:UsuariosViewModel></viewModels:UsuariosViewModel>
+    </ContentPage.BindingContext>
+   
+    <StackLayout>
+        <Button Text="Get Users ListView" Command="{Binding GetUsuariosCommand}" />
+        <ActivityIndicator IsRunning="{Binding IsBusyGetUsuariosCommand}" />
+
+        <ListView ItemsSource="{Binding Usuarios}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding IdWithUsuario}" TextColor="Purple" 
+                              Detail="{Binding usu_password}" DetailColor="Maroon" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
